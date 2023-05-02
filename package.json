@@ -1,0 +1,28 @@
+{
+  "name": "spotified_sv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intoavortex/spotified_sv.git"
+  },
+  "author": "zei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/intoavortex/spotified_sv/issues"
+  },
+  "homepage": "https://github.com/intoavortex/spotified_sv#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "nodemon": "^2.0.22",
+    "request": "^2.88.2"
+  }
+}
