@@ -57,7 +57,13 @@ app.get('/login', function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email';
+  var scope = `
+    user-read-private
+    user-read-email
+    user-read-recently-played
+    user-modify-playback-state
+    user-read-playback-state
+  `
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -123,37 +129,37 @@ app.get('/callback', function(req, res) {
         })
         */
 
-        /*
-        var options = {
-          url: 'https://api.spotify.com/v1/me',
-          headers: { 'Authorization': 'Bearer ' + access_token },
-          json: true
-        };
+        
+        // var options = {
+        //   url: 'https://api.spotify.com/v1/me',
+        //   headers: { 'Authorization': 'Bearer ' + access_token },
+        //   json: true
+        // };
 
-        // use the access token to access the Spotify Web API
-        request.get(options, function(error, response, body) {
-          console.log(body);
-        });
+        // // use the access token to access the Spotify Web API
+        // request.get(options, function(error, response, body) {
+        //   console.log(body);
+        // });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('/#' +
-          querystring.stringify({
-            access_token: access_token,
-            refresh_token: refresh_token
-          }));
+        // res.redirect('/#' +
+        //   querystring.stringify({
+        //     access_token: access_token,
+        //     refresh_token: refresh_token
+        //   }));
 
-          req.session.accessToken = access_token;
-          req.session.refreshToken = refresh_token;
+        //   req.session.accessToken = access_token;
+        //   req.session.refreshToken = refresh_token;
 
-          console.log(access_token);  
-          req.session.save(()=>{
-            // console.log(access_token);  
-            // return res.json({
-            //   accessToken : access_token,
-            //   refreshToken   : refresh_token,
-            // });
-          })
-        */
+        //   console.log(access_token);  
+        //   req.session.save(()=>{
+        //     // console.log(access_token);  
+        //     // return res.json({
+        //     //   accessToken : access_token,
+        //     //   refreshToken   : refresh_token,
+        //     // });
+        //   })
+        
       } else {
         res.redirect('/#' +
           querystring.stringify({
