@@ -63,15 +63,17 @@ app.get('/login', function(req, res) {
     user-read-recently-played
     user-modify-playback-state
     user-read-playback-state
+    streaming
   `
+
   res.redirect('https://accounts.spotify.com/authorize?' +
-    querystring.stringify({
-      response_type: 'code',
-      client_id: client_id,
-      scope: scope,
-      redirect_uri: redirect_uri,
-      state: state
-    }));
+  querystring.stringify({
+    response_type: 'code',
+    client_id: client_id,
+    scope: scope,
+    redirect_uri: redirect_uri,
+    state: state
+  }));
 });
 
 app.get('/callback', function(req, res) {
