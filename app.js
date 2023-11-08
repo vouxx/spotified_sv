@@ -101,7 +101,7 @@ app.get('/callback', function(req, res) {
         grant_type: 'authorization_code'
       },
       headers: {
-        'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
+        'Authorization': 'Basic ' + (new Buffer.from(client_id + ':' + client_secret).toString('base64'))
       },
       json: true
     };
@@ -131,7 +131,7 @@ app.get('/callback', function(req, res) {
         })
         */
 
-        
+
         // var options = {
         //   url: 'https://api.spotify.com/v1/me',
         //   headers: { 'Authorization': 'Bearer ' + access_token },
@@ -153,15 +153,15 @@ app.get('/callback', function(req, res) {
         //   req.session.accessToken = access_token;
         //   req.session.refreshToken = refresh_token;
 
-        //   console.log(access_token);  
+        //   console.log(access_token);
         //   req.session.save(()=>{
-        //     // console.log(access_token);  
+        //     // console.log(access_token);
         //     // return res.json({
         //     //   accessToken : access_token,
         //     //   refreshToken   : refresh_token,
         //     // });
         //   })
-        
+
       } else {
         res.redirect('/#' +
           querystring.stringify({
@@ -198,7 +198,7 @@ app.get('/refresh_token', function(req, res) {
 
 app.get('/access-token', function(req, res) {
   console.log('access: ' + accessToken);
-  
+
   const response = {
     access_token: accessToken,
     expire_time: 36000,
